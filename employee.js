@@ -7,6 +7,14 @@ const db = require('./db');
 // npm package that benefits the look of our console 
 require('console.table');
 
+// Executes viewAllDepartments search query in our index.js
+// "\n used for visibility reasons"
+async function viewAllDepartments() {
+    const departments = await db.viewAllDepartments();
+    console.log("\n")
+    console.table(departments);
+    mainMenu()
+}
 
 
 // base function that will be used to start the application and passed in to the end of every other function unless called to quit.

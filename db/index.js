@@ -7,7 +7,18 @@ class DB {
         this.connection = connection
     }
 
-
+    viewAllDepartments() {
+        return this.connection.query(
+            `SELECT 
+                department.id, 
+                department.name
+            FROM
+                department
+            ORDER BY
+                department.id
+            `
+        )
+    }
 };
 
 module.exports = new DB(connection);
