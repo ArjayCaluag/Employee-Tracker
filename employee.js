@@ -48,6 +48,40 @@ async function viewAllEmployees() {
     mainMenu();
 }
 
+async function addRole(){
+    // This function proceeds once the viewAllDepartments query has been ran
+    const departments = await db.viewAllDepartments();
+    console.log(departments)
+    // Populating our inquirer list choices with the departments in our sql database by calling .map on our array of sql objects
+    const departmentChoices = departments.map(({ id, name }) => ({
+        name: name,
+        value: id
+      }));
+    
+    const role = await inquirer.prompt([
+        {
+            type: 'input',
+            name : 'title',
+            message: "What role would you like to add?"
+        },
+        {
+            type: 'input',
+            name : 'salary',
+            message: "What is the yearly salary?"
+        },
+        {
+            type: 'list',
+            name : 'department_id',
+            message: "What department?",
+            choices: departmentChoices
+        },
+    ]);
+    await db.addRole(role)
+    console.log('New role has been added')
+    mainMenu()
+}
+   
+
 
 // base function that will be used to start the application and passed in to the end of every other function unless called to quit.
 function mainMenu() {
