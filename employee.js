@@ -80,6 +80,42 @@ async function addRole(){
     console.log('New role has been added')
     mainMenu()
 }
+
+async function addEmployee(){
+    const roleChoice = await db.viewAllRoles();
+    const showRoles = roleChoice.map(({ id, title }) => ({
+        name: title,
+        value: id
+      }));
+
+    const employee = await inquirer.prompt([
+        {
+            type: 'input',
+            name : 'first_name',
+            message : 'What is employees first name?'
+        },
+        {
+            type: 'input',
+            name : 'last_name',
+            message : 'What is employees last name?'
+        },
+        {
+            type: 'list',
+            name : 'role_id',
+            message : 'What role?',
+            choices: showRoles
+        },
+        {
+            type: 'input',
+            name : 'manager_id',
+            message : 'What is employees manager id?'
+        },
+    ])
+    // Waits for the addemployee function to be completed
+    await db.addEmployee(employee)
+    console.log('New Employee added')
+    mainMenu()
+}
    
 
 
