@@ -81,8 +81,10 @@ async function addRole(){
     mainMenu()
 }
 
+// awaits the viewAllRoles query
 async function addEmployee(){
     const roleChoice = await db.viewAllRoles();
+     // Populating our inquirer list choices with the departments in our sql database by calling .map on our array of sql objects
     const showRoles = roleChoice.map(({ id, title }) => ({
         name: title,
         value: id
@@ -143,7 +145,6 @@ async function updateEmployee(){
     mainMenu()
 }
    
-
 
 // base function that will be used to start the application and passed in to the end of every other function unless called to quit.
 function mainMenu() {

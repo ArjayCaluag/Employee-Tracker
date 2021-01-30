@@ -20,6 +20,7 @@ class DB {
         )
     }
 
+    // Foreign key used to assist in joining department id to role
     viewAllRoles() {
         return this.connection.query(
             `SELECT 
@@ -37,7 +38,7 @@ class DB {
         )
     }
 
-
+    // depart input is gathered from inquirer
     addDepartment(department) {
         return this.connection.query(
             `INSERT INTO
@@ -62,6 +63,7 @@ class DB {
         )
     }
 
+    // role is filled with input from inquirer
     addRole(role){
         
         return this.connection.query(
@@ -73,7 +75,7 @@ class DB {
         )
     }
 
-    
+    // employee is filled with input from inquirer
     addEmployee(employee){
         return this.connection.query(
             `INSERT INTO
@@ -82,7 +84,7 @@ class DB {
             ` , employee
         )
     }
-    
+    // roleid and id is filled with input from inquirer
     updateEmployee(roleid,id){
         return this.connection.query(
             `UPDATE 
@@ -95,8 +97,5 @@ class DB {
         )
     }
 };
-
-
-}
 
 module.exports = new DB(connection);
