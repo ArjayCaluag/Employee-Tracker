@@ -24,6 +24,22 @@ async function viewAllRoles() {
     mainMenu()
 }
 
+// Executes our addDepartment search query ONCE user completes inquirer prompt.
+async function addDepartment(){
+    const department = await inquirer.prompt([
+        {
+            type: 'input',
+            name : 'name',
+            message: 'Whats the name of the department?'
+    }
+    ])
+
+    // Pass in values from our variable containing inquirer values to our query
+    await db.addDepartment(department)
+    console.log('Your new department has been added')
+    mainMenu()
+}
+
 // base function that will be used to start the application and passed in to the end of every other function unless called to quit.
 function mainMenu() {
     inquirer.prompt([
