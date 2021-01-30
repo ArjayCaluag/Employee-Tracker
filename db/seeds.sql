@@ -12,13 +12,13 @@ VALUES
 INSERT INTO role
     (title, salary, department_id)
 VALUES
-    ('Tester', 750000, 1),
+    ('Manager', 750000, 1),
     ('Tester', 500000, 1),
     ('Tester', 50000, 1),
-    ('Designer', 1000000, 2),
+    ('Manager', 1000000, 2),
     ('Designer', 1000000, 2),
     ('Designer', 60000, 2),
-    ('Engineer', 250000, 3),
+    ('Manager', 250000, 3),
     ('Engineer', 250000, 3),
     ('Engineer', 150000, 3);
 
