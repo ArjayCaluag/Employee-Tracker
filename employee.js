@@ -25,13 +25,13 @@ async function viewAllRoles() {
 }
 
 // Executes our addDepartment search query ONCE user completes inquirer prompt.
-async function addDepartment(){
+async function addDepartment() {
     const department = await inquirer.prompt([
         {
             type: 'input',
-            name : 'name',
+            name: 'name',
             message: 'Whats the name of the department?'
-    }
+        }
     ])
 
     // Pass in values from our variable containing inquirer values to our query
@@ -39,6 +39,15 @@ async function addDepartment(){
     console.log('Your new department has been added')
     mainMenu()
 }
+
+// Consoles all Employees once query is completed.
+async function viewAllEmployees() {
+    const employees = await db.viewAllEmployees();
+    console.log("\n")
+    console.table(employees)
+    mainMenu();
+}
+
 
 // base function that will be used to start the application and passed in to the end of every other function unless called to quit.
 function mainMenu() {
