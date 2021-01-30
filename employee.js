@@ -116,6 +116,32 @@ async function addEmployee(){
     console.log('New Employee added')
     mainMenu()
 }
+
+// Function wait for viewAllEmployee query before proceeding
+async function updateEmployee(){
+    const employee = await db.viewAllEmployees();
+    const selectEmployee = employee.map(({id, first_name, last_name})=>({
+        // Template literal used to show both fist and last name when presenting manager.
+        name: `${first_name} ${last_name}`,
+        value: id
+    }));
+    const updateEmployee = await inquirer.prompt([
+        {
+            type: 'list',
+            name: 'id',
+            message: 'What employee do you want to update?',
+            choices: selectEmployee
+        },
+        {
+            type: 'input',
+            name: 'role_id',
+            message: 'What is the new role id?'
+        },
+    ])
+    await db.updateEmployee(updateEmployee)
+    console.log('Employee has been updated')
+    mainMenu()
+}
    
 
 

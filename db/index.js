@@ -82,6 +82,20 @@ class DB {
             ` , employee
         )
     }
+    
+    updateEmployee(roleid,id){
+        return this.connection.query(
+            `UPDATE 
+                employee
+            SET 
+                role_id = ? 
+            WHERE 
+                id = ?
+            ` , [roleid,id]
+        )
+    }
+};
+
 
 }
 
