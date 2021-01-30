@@ -16,6 +16,13 @@ async function viewAllDepartments() {
     mainMenu()
 }
 
+// Executes viewAllRoles search query in our index.js
+async function viewAllRoles() {
+    const roles = await db.viewAllRoles();
+    console.log("\n")
+    console.table(roles)
+    mainMenu()
+}
 
 // base function that will be used to start the application and passed in to the end of every other function unless called to quit.
 function mainMenu() {
